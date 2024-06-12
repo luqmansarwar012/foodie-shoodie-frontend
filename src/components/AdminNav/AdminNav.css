@@ -1,0 +1,25 @@
+.admin-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 6px 6px 4px;
+  border-bottom: 1.5px solid #a9a9a9;
+}
+.admin-nav .profile-logout {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.admin-nav .profile-logout .logout {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+}
+.admin-nav .admin-logo admin_logo {
+  width: max(15%, 100px);
+}
+.admin-nav .profile {
+  padding: 10px 5px;
+  width: 40px;
+}
