@@ -38,15 +38,19 @@ const PlaceOrder = () => {
             items: orderItems,
             amount: getTotalCartAmount() + 10
         }
-        let response = await axios.post(url + '/api/order/place', orderData, { headers: { token } })
-        console.log('gotchaaaa: ', response.data.success)
-        if (response.data.success) {
-            const { session_url } = response.data
-            console.log(session_url)
-            window.location.replace(session_url)
-        }
-        else {
-            toast.error('error')
+        try {
+            const response = await axios.post(url + '/api/order/place', orderData, { headers: { token } });
+            console.log('Response from backend:', response.data);
+            if (response.data.success) {
+                const { session_url } = response.data;
+                console.log('Redirecting to Stripe Checkout:', session_url);
+                window.location.replace(session_url);
+            } else {
+                toast.error('Error placing order');
+            }
+        } catch (error) {
+            console.error('Error placing order:', error);
+            toast.error('Error placing order');
         }
     }
     const navigate = useNavigate()
